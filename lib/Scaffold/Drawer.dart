@@ -31,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  //int _counter = 0;//private
+  int _counter = 0;//private
   SnackBar _snackBar = SnackBar(content: Text("You Click Float Button"));
   void _incrementCounter() {
     Scaffold.of(context).removeCurrentSnackBar();
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
 //      // so that the display can reflect the updated values. If we changed
 //      // _counter without calling setState(), then the build method would not be
 //      // called again, and so nothing would appear to happen.
-//      _counter++;
+      _counter++;
 //      });
   }
   @override
@@ -115,13 +115,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: Image.asset('images/lyonhsu3_t.png'),
                 ),
-
+                Expanded(
+                  child: InkWell(
+                      onTap : (){
+                        _incrementCounter;
+                      },
+                      child: new Image.network('https://titangene.github.io/images/cover/flutter.jpg')
+                  )
+                ),
                 Expanded(
                   child:Container(
                     transform: Matrix4.rotationZ(-0.2),
                     constraints: BoxConstraints.expand(),
                     color: Colors.deepOrange,
-                    child: Center(child: Text('Flutter Container Child', style: TextStyle(fontSize: 60.0),)),
+                    child: Center(child: Text('Flutter $_counter', style: TextStyle(fontSize: 60.0),)),
                   ),
                 ),
                 Row(
@@ -147,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Scaffold.of(context).removeCurrentSnackBar();
                       Scaffold.of(context).showSnackBar(_snackBar);
                     },
-                    child: Text('Third Button'),
+                    child: Text('Third Button $_counter'),
                   ),
                 ),
               ],
